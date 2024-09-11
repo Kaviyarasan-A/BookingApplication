@@ -15,5 +15,6 @@ namespace DataAccessLayer
         public void Registeruser(BookingTicket userRegData);
         public void UpdateUser(BookingTicket reg);
         public void DeleteUser(long TicketId);
+        
     }
 }

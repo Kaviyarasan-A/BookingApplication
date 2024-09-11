@@ -27,25 +27,26 @@ namespace BookingApplication.Controllers
         // GET: BookingController/Details/5
         public ActionResult Details(string Busname)
         {
-            var result = reg.SelectUserByUsername(Busname);
-            return View();
+            var details = reg.SelectUserByUsername(Busname);
+            return View("Details",details);
         }
 
         // GET: BookingController/Create
-        public ActionResult Create(BookingTicket value)
+        public ActionResult Create()
         {
-            reg.Registeruser(value);
-            return View();
+            
+            return View("Create",new BookingTicket());
         }
 
         // POST: BookingController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(BookingTicket regs)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                reg.Registeruser(regs);
+                return RedirectToAction(nameof(List));
             }
             catch
             {
@@ -54,18 +55,20 @@ namespace BookingApplication.Controllers
         }
 
         // GET: BookingController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string Busname)
         {
-            return View();
+            var edit = reg.SelectUserByUsername(Busname);
+            return View("Edit",edit);
         }
 
         // POST: BookingController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(BookingTicket regs)
         {
             try
             {
+                reg.UpdateUser(regs);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -75,18 +78,21 @@ namespace BookingApplication.Controllers
         }
 
         // GET: BookingController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete( )
         {
+           
+           
             return View();
         }
 
         // POST: BookingController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(long TicketId)
         {
             try
             {
+                reg.DeleteUser(TicketId);
                 return RedirectToAction(nameof(Index));
             }
             catch

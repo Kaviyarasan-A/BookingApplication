@@ -67,9 +67,9 @@
                 @Html.DisplayFor(modelItem => item.ContactNo)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "Edit", new { Busname = item.Busname }) |
+                @Html.ActionLink("Details", "Details", new { Busname = item.Busname }) |
+                @Html.ActionLink("Delete", "Delete", new { TicketId=item.TicketID })
             </td>
         </tr>
 }
