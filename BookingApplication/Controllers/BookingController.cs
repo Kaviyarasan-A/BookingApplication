@@ -20,14 +20,14 @@ namespace BookingApplication.Controllers
         // GET: BookingController
         public ActionResult List()
         {
-            var result = reg.SelectALLUser();
+            var result = reg.GetAllUser();
             return View("list",result);
         }
 
         // GET: BookingController/Details/5
         public ActionResult Details(string Busname)
         {
-            var details = reg.SelectUserByUsername(Busname);
+            var details = reg.GetUserByName(Busname);
             return View("Details",details);
         }
 
@@ -45,7 +45,7 @@ namespace BookingApplication.Controllers
         {
             try
             {
-                reg.Registeruser(regs);
+                reg.InsertUser(regs);
                 return RedirectToAction(nameof(List));
             }
             catch
@@ -57,7 +57,7 @@ namespace BookingApplication.Controllers
         // GET: BookingController/Edit/5
         public ActionResult Edit(string Busname)
         {
-            var edit = reg.SelectUserByUsername(Busname);
+            var edit = reg.GetUserByName(Busname);
             return View("Edit",edit);
         }
 
@@ -78,22 +78,22 @@ namespace BookingApplication.Controllers
         }
 
         // GET: BookingController/Delete/5
-        public ActionResult Delete( )
+        public ActionResult Delete(string busname )
         {
+            var details = reg.GetUserByName(busname);
            
-           
-            return View();
+            return View("Delete",details);
         }
 
         // POST: BookingController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(long TicketId)
+        public ActionResult Delete(long TicketID)
         {
             try
             {
-                reg.DeleteUser(TicketId);
-                return RedirectToAction(nameof(Index));
+                reg.DeleteUser(TicketID);
+                return RedirectToAction(nameof(List));
             }
             catch
             {

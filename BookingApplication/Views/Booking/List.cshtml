@@ -69,7 +69,7 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { Busname = item.Busname }) |
                 @Html.ActionLink("Details", "Details", new { Busname = item.Busname }) |
-                @Html.ActionLink("Delete", "Delete", new { TicketId=item.TicketID })
+                @Html.ActionLink("Delete", "Delete", new { busname = item.Busname })
             </td>
         </tr>
 }

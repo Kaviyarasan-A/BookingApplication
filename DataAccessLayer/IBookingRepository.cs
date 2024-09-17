@@ -9,12 +9,11 @@ namespace DataAccessLayer
 {
      public interface IBookingRepository
     {
-        public List<BookingTicket> SelectALLUser();
-
-        public BookingTicket SelectUserByUsername(string Busname);
-        public void Registeruser(BookingTicket userRegData);
-        public void UpdateUser(BookingTicket reg);
+        public void InsertUser(BookingTicket TicketID);
+        public BookingTicket GetUserByName(string Busname);
+        public List<BookingTicket> GetAllUser();
+        public void UpdateUser(BookingTicket loc);
         public void DeleteUser(long TicketId);
-        
+
     }
 }
