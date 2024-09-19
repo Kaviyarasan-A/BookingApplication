@@ -19,14 +19,17 @@ namespace BookingApplication.Controllers
         }
 
         public IActionResult Index()
-        {
+        { 
             return View();
         }
 
+
         public IActionResult Privacy()
         {
+            ViewData["My Time"] = DateTime.Now.ToString();
             return View();
         }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

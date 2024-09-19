@@ -34,8 +34,16 @@ namespace BookingApplication.Controllers
         // GET: BookingController/Create
         public ActionResult Create()
         {
+            try
+            {
+                return View("Create", new BookingTicket());
+            }
+            catch(Exception ex)
+            {
+                throw;
+            }
             
-            return View("Create",new BookingTicket());
+           
         }
 
         // POST: BookingController/Create
